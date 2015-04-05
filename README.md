@@ -7,8 +7,11 @@ I was drunk when created that repo and have not any experience in creating Windo
 TODO:
 
 1) Make working 32 bit binary version for Windows 7.
+
 2) Make working 64 bit binary version for Windows 7.
+
 3) Make working 32 bit binary version for Windows 8.
+
 4) Make working 64 bit binary version for Windows 8.
 
 Fork, make commits. We still rememeber the vest firewall fro windows XP!
