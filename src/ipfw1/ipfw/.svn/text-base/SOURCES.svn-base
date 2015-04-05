@@ -1,0 +1,21 @@
+TARGETNAME=ipfw
+TARGETPATH=..\bin
+TARGETTYPE=PROGRAM
+
+TARGETLIBS= $(SDK_LIB_PATH)\iphlpapi.lib $(SDK_LIB_PATH)\ws2_32.lib $(SDK_LIB_PATH)\user32.lib
+USER_INCLUDES=..\sys;$(SDK_INC_PATH);
+
+C_DEFINES=$(C_DEFINES) /D__BSD_VISIBLE=1 /MT
+
+SOURCES= getopt.c ipfw.c win32.c svcmain.c helper.c
+UMTYPE=console
+386_STDCALL=0
+USE_MSVCRT=1
+
+!if "$(NTDEBUG)"=="ntsdnodbg"
+NTDEBUG=
+!endif
+
+!ifndef NTDEBUG
+NTDEBUG=retail
+!endif

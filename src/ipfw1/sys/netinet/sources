@@ -1,0 +1,25 @@
+TARGETNAME=ip_fw
+TARGETPATH=..\..\bin
+TARGETTYPE=DRIVER
+
+TARGETLIBS=$(SDK_LIB_PATH)\wdmsec.lib
+USER_INCLUDES=..
+
+C_DEFINES=$(C_DEFINES) /D_KERNEL /D__BSD_VISIBLE=1 /DKLD_MODULE
+
+# you can comment defines below
+C_DEFINES=$(C_DEFINES) /DIPFIREWALL_VERBOSE
+C_DEFINES=$(C_DEFINES) /DIPFIREWALL_VERBOSE_LIMIT=100
+C_DEFINES=$(C_DEFINES) /DIPFIREWALL_DEFAULT_TO_ACCEPT
+
+!IF "$(DDKBUILDENV)" == "chk"
+MSC_OPTIMIZATION=/Od /Oi
+!ENDIF
+
+LINKER_FLAGS=$(LINKER_FLAGS) 
+
+# Generate a browser information file for use in IDE development
+BROWSER_INFO=0
+BROWSERFILE=$(TARGETNAME).BSC -n
+
+SOURCES=ip_fw.c ..\wipfw.c ..\ip_pfhook.c ..\ip_fw_nt.c ..\if_list.c ..\log.c ..\ktime.c ..\wipfw.rc
